@@ -8,6 +8,7 @@ import ai.api.model.Fulfillment;
 public class MyWebhookServlet extends AIWebhookServlet {
 	@Override
 	protected void doWebhook(AIWebhookRequest input, Fulfillment output) {
+		System.out.println("***********************webhook******************************");
 		output.setSpeech("You said: " + input.getResult().getFulfillment().getSpeech());
 	}
 }
