@@ -41,6 +41,13 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/ai.api/libai -->
+<dependency>
+    <groupId>ai.api</groupId>
+    <artifactId>libai</artifactId>
+    <version>1.6.12</version>
+</dependency>
+
 
 		<dependency>
 			<groupId>com.linecorp.bot</groupId>

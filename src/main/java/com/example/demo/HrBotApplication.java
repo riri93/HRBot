@@ -7,7 +7,6 @@ import org.springframework.context.annotation.ComponentScan;
 import com.linecorp.bot.spring.boot.annotation.LineMessageHandler;
 
 @SpringBootApplication
-@ComponentScan(basePackages = { "com.example.controller" })
 @LineMessageHandler
 public class HrBotApplication {
 
