@@ -6,7 +6,6 @@ import java.util.UUID;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,27 +22,21 @@ public class BotController {
 		return model;
 	}
 
+
 	@RequestMapping(value = "/webhook", method = RequestMethod.POST)
-	private @ResponseBody JSONArray webhook(@RequestBody Map<String, Object> obj) throws JSONException {
-		System.out.println("************* ******************" + obj);
-		// Map<String, Object> json = new HashMap<String, Object>();
+	private @ResponseBody Map<String, Object> webhook(@RequestBody JSONArray obj) throws JSONException {
 
-		JSONObject json = new JSONObject();
+		Map<String, Object> json = new HashMap<String, Object>();
 
-		String Speech = "The cost of shipping to  is  for " + obj.get("result");
-
-		json.put("speech", Speech);
+		String result = obj.getJSONObject(5).getString("parameters");
+		String Speech = "The cost of shipping to  is  for " + result;
+		
+		json.put("speech", " The cost of shipping to  is  1000 euros.");
 		json.put("displayText", " The cost of shipping to  is  1000 euros.");
 
 		json.put("source", "apiai-onlinestore-shipping");
-
-		JSONArray ja = new JSONArray();
-		ja.put(json);
-
-		
-		
-		System.out.println("jaaaaaaaaaaaaaaaaaaaaaa******* : " + ja);
-		return ja;
+		System.out.println("************* ******************" + result);
+		return json;
 
 	}
 }
