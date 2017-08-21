@@ -24,19 +24,18 @@ public class BotController {
 	}
 
 	@RequestMapping(value = "/webhook", method = RequestMethod.POST)
-	private @ResponseBody Map<String, Object> webhook(@RequestBody Map<String, Object> obj) throws JSONException {
+	private @ResponseBody JSONArray webhook(@RequestBody Map<String, Object> obj) throws JSONException {
 		System.out.println("************* ******************" + obj);
-		//Map<String, Object> json = new HashMap<String, Object>();
+		// Map<String, Object> json = new HashMap<String, Object>();
 
 		JSONObject json = new JSONObject();
-		
-		String Speech = "The cost of shipping to  is  for " +  obj.get("result");
+
+		String Speech = "The cost of shipping to  is  for " + obj.get("result");
 
 		json.put("speech", Speech);
 		json.put("displayText", " The cost of shipping to  is  1000 euros.");
 
 		json.put("source", "apiai-onlinestore-shipping");
-		
 
 		JSONArray ja = new JSONArray();
 		ja.put(json);
