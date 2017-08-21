@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,20 +21,18 @@ public class BotController {
 		return model;
 	}
 
-
 	@RequestMapping(value = "/webhook", method = RequestMethod.POST)
-	private @ResponseBody Map<String, Object> webhook(@RequestBody JSONArray obj) throws JSONException {
+	private @ResponseBody Map<String, Object> webhook(@RequestBody Map<String, Object> obj) throws JSONException {
 
 		Map<String, Object> json = new HashMap<String, Object>();
 
-		String result = obj.getJSONObject(5).getString("parameters");
-		String Speech = "The cost of shipping to  is  for " + result;
-		
+		String Speech = "The cost of shipping to  is  for " + obj.get("result");
+
 		json.put("speech", " The cost of shipping to  is  1000 euros.");
 		json.put("displayText", " The cost of shipping to  is  1000 euros.");
 
 		json.put("source", "apiai-onlinestore-shipping");
-		System.out.println("************* ******************" + result);
+		System.out.println("************* ******************" + obj.get("result"));
 		return json;
 
 	}
