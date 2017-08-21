@@ -26,10 +26,12 @@ public class BotController {
 
 		Map<String, Object> json = new HashMap<String, Object>();
 
-		String Speech = "The cost of shipping to  is  for " + obj.get("result");
+		String speech =  obj.get("result").toString();
 
+		System.out.println("speech : " + speech);
+		
 		json.put("speech", " The cost of shipping to  is  1000 euros.");
-		json.put("displayText", " The cost of shipping to  is  1000 euros.");
+		json.put("displayText", " The cost of shipping for " + speech + " to  is  1000 euros.");
 
 		json.put("source", "apiai-onlinestore-shipping");
 		System.out.println("************* ******************" + obj.get("result"));
