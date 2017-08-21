@@ -28,7 +28,7 @@ public class BotController {
 
 		String Speech = "The cost of shipping to  is  for " + obj.get("result");
 
-		json.put("speech", " The cost of shipping to  is  1000 euros.");
+		json.put("speech", Speech);
 		json.put("displayText", " The cost of shipping to  is  1000 euros.");
 
 		json.put("source", "apiai-onlinestore-shipping");
