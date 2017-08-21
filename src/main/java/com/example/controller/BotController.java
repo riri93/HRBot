@@ -40,6 +40,9 @@ public class BotController {
 		JSONArray ja = new JSONArray();
 		ja.put(json);
 
+		
+		
+		System.out.println("jaaaaaaaaaaaaaaaaaaaaaa******* : " + ja);
 		return ja;
 
 	}
