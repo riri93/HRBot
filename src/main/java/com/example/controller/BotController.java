@@ -23,7 +23,7 @@ public class BotController {
 
 	@RequestMapping(value = "/webhook", method = RequestMethod.POST)
 	private @ResponseBody Map<String, Object> webhook(@RequestBody Map<String, Object> obj) throws JSONException {
-
+		System.out.println("************* ******************" + obj);
 		Map<String, Object> json = new HashMap<String, Object>();
 
 		String Speech = "The cost of shipping to  is  for " + obj.get("result");
@@ -32,7 +32,7 @@ public class BotController {
 		json.put("displayText", " The cost of shipping to  is  1000 euros.");
 
 		json.put("source", "apiai-onlinestore-shipping");
-		System.out.println("************* ******************" + obj.get("result"));
+		
 		return json;
 
 	}
