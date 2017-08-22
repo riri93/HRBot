@@ -8,7 +8,7 @@ import com.linecorp.bot.spring.boot.annotation.LineMessageHandler;
 
 @SpringBootApplication
 @LineMessageHandler
-@ComponentScan
+@ComponentScan(basePackages = { "com.example.controller" })
 public class HrBotApplication {
 
 	public static void main(String[] args) {
