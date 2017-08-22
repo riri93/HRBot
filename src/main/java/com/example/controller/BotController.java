@@ -34,13 +34,18 @@ public class BotController {
 
 		Map<String, Object> json = new HashMap<String, Object>();
 
+		String Speech = "The cost of shipping to  is  for " + obj.get("result");
+
 		HairSalon hairSalon = hairSaloonRepository.getHairSaloonByZone("Europe");
 
-		json.put("speech", " The name of the Hair saloOn in Europe is : " + hairSalon.getName());
+		json.put("speech", " The name of the Hair salon in Europe is : " + hairSalon.getName());
 		json.put("displayText", " The name of the Hair salon in Europe is : " + hairSalon.getName());
+
 		json.put("source", "apiai-onlinestore-shipping");
-		
-		System.out.println("************* ******************" + obj.get("parameters"));
+
+		System.out.println("*************************************");
+		System.out.println(obj.get("result"));
+		System.out.println("*************************************");
 		return json;
 
 	}
