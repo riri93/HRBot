@@ -43,9 +43,8 @@ public class BotController {
 
 		json.put("speech", " The name of the Hair salon in Europe is : " + hairSalon.getName());
 		json.put("displayText", " The name of the Hair salon in Europe is : " + hairSalon.getName());
-
 		json.put("source", "apiai-onlinestore-shipping");
-
+		
 		System.out.println("*************************************");
 		System.out.println(jiji);
 		System.out.println("*************************************");
