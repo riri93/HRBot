@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,8 @@ public class BotController {
 
 		Map<String, Object> json = new HashMap<String, Object>();
 
+		JSONObject jiji = new JSONObject(obj);
+
 		String Speech = "The cost of shipping to  is  for " + obj.get("result");
 
 		HairSalon hairSalon = hairSaloonRepository.getHairSaloonByZone("Europe");
@@ -44,7 +47,7 @@ public class BotController {
 		json.put("source", "apiai-onlinestore-shipping");
 
 		System.out.println("*************************************");
-		System.out.println(obj.get("result"));
+		System.out.println(jiji.getString("result"));
 		System.out.println("*************************************");
 		return json;
 
