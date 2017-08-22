@@ -5,14 +5,22 @@ import java.util.Map;
 import java.util.UUID;
 
 import org.json.JSONException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.entity.HairSalon;
+import com.example.repository.HairSaloonRepository;
+
 @RestController
 public class BotController {
+
+	@Autowired
+	HairSaloonRepository hairSaloonRepository;
+
 	@RequestMapping("/resource")
 	public Map<String, Object> home() {
 		Map<String, Object> model = new HashMap<String, Object>();
@@ -26,10 +34,12 @@ public class BotController {
 
 		Map<String, Object> json = new HashMap<String, Object>();
 
+		HairSalon hairSalon = hairSaloonRepository.getHairSaloonByZone("Europe");
+
 		String Speech = "The cost of shipping to  is  for " + obj.get("result");
 
-		json.put("speech", " The cost of shipping to  is  1000 euros.");
-		json.put("displayText", " The cost of shipping to  is  1000 euros.");
+		json.put("speech", " The name of the Hair salon in Europe is : " + hairSalon.getName());
+		json.put("displayText", " The name of the Hair salon in Europe is : " + hairSalon.getName());
 
 		json.put("source", "apiai-onlinestore-shipping");
 		System.out.println("************* ******************" + obj.get("result"));
