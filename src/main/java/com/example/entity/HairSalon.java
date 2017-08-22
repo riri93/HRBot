@@ -44,4 +44,12 @@ public class HairSalon implements Serializable {
 		this.zone = zone;
 	}
 
+	public HairSalon(String name, String zone) {
+		super();
+		this.name = name;
+		this.zone = zone;
+	}
+	
+	
+
 }
