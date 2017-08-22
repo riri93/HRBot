@@ -47,7 +47,7 @@ public class BotController {
 		json.put("source", "apiai-onlinestore-shipping");
 
 		System.out.println("*************************************");
-		System.out.println(jiji.getString("result"));
+		System.out.println(jiji);
 		System.out.println("*************************************");
 		return json;
 
