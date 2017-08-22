@@ -14,7 +14,7 @@ import com.example.entity.HairSalon;
 @RepositoryRestResource
 public interface HairSaloonRepository extends JpaRepository<HairSalon, Serializable> {
 
-	@Query("Select h from HairSaloon h where h.zone like :zone")
+	@Query("Select h from HairSalon h where h.zone like :zone")
 	public HairSalon getHairSaloonByZone(@Param("zone") String zone);
 
 }
