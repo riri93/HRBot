@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Staff implements Serializable {
@@ -24,6 +28,11 @@ public class Staff implements Serializable {
 	private String dayoff;
 	private Date startTime;
 	private Date finishTime;
+
+	@ManyToOne
+	@JoinColumn(name = "idSalon", referencedColumnName = "idSalon")
+	@JsonBackReference
+	private Salon salon;
 
 	public int getIdStaff() {
 		return idStaff;
@@ -79,6 +88,14 @@ public class Staff implements Serializable {
 
 	public void setFinishTime(Date finishTime) {
 		this.finishTime = finishTime;
+	}
+
+	public Salon getSalon() {
+		return salon;
+	}
+
+	public void setSalon(Salon salon) {
+		this.salon = salon;
 	}
 
 	public Staff(String name, String speciality, String pictureURL, String dayoff, Date startTime, Date finishTime) {

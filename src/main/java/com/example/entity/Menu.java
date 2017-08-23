@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Menu implements Serializable {
@@ -20,6 +24,11 @@ public class Menu implements Serializable {
 	private int price;
 	private String nameMenu;
 	private String paymentMethod;
+
+	@ManyToOne
+	@JoinColumn(name = "idSalon", referencedColumnName = "idSalon")
+	@JsonBackReference
+	private Salon salon;
 
 	public int getIdMenu() {
 		return idMenu;
@@ -51,6 +60,14 @@ public class Menu implements Serializable {
 
 	public void setPaymentMethod(String paymentMethod) {
 		this.paymentMethod = paymentMethod;
+	}
+
+	public Salon getSalon() {
+		return salon;
+	}
+
+	public void setSalon(Salon salon) {
+		this.salon = salon;
 	}
 
 	public Menu(int price, String nameMenu, String paymentMethod) {

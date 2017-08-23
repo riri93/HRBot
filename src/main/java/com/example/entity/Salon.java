@@ -2,11 +2,13 @@ package com.example.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Salon implements Serializable {
@@ -25,6 +27,17 @@ public class Salon implements Serializable {
 	private String dayoff;
 	private Date openTime;
 	private Date closeTime;
+
+	@OneToMany(mappedBy = "salon")
+	private List<Client> clients;
+	@OneToMany(mappedBy = "salon")
+	private List<Menu> menus;
+	@OneToMany(mappedBy = "salon")
+	private List<NearStation> nearStations;
+	@OneToMany(mappedBy = "salon")
+	private List<Staff> staffs;
+	@OneToMany(mappedBy = "salon")
+	private List<Promotion> promotions;
 
 	public int getIdSalon() {
 		return idSalon;
@@ -88,6 +101,46 @@ public class Salon implements Serializable {
 
 	public void setCloseTime(Date closeTime) {
 		this.closeTime = closeTime;
+	}
+
+	public List<Client> getClients() {
+		return clients;
+	}
+
+	public void setClients(List<Client> clients) {
+		this.clients = clients;
+	}
+
+	public List<Menu> getMenus() {
+		return menus;
+	}
+
+	public void setMenus(List<Menu> menus) {
+		this.menus = menus;
+	}
+
+	public List<NearStation> getNearStations() {
+		return nearStations;
+	}
+
+	public void setNearStations(List<NearStation> nearStations) {
+		this.nearStations = nearStations;
+	}
+
+	public List<Staff> getStaffs() {
+		return staffs;
+	}
+
+	public void setStaffs(List<Staff> staffs) {
+		this.staffs = staffs;
+	}
+
+	public List<Promotion> getPromotions() {
+		return promotions;
+	}
+
+	public void setPromotions(List<Promotion> promotions) {
+		this.promotions = promotions;
 	}
 
 	public Salon(String nameSalon, String address, String phone, String email, String dayoff, Date openTime,

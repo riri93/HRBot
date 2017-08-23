@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class NearStation implements Serializable {
@@ -20,6 +24,11 @@ public class NearStation implements Serializable {
 	private String type;
 	private String nameStation;
 	private String distance;
+
+	@ManyToOne
+	@JoinColumn(name = "idSalon", referencedColumnName = "idSalon")
+	@JsonBackReference
+	private Salon salon;
 
 	public int getIdStation() {
 		return idStation;
@@ -51,6 +60,14 @@ public class NearStation implements Serializable {
 
 	public void setDistance(String distance) {
 		this.distance = distance;
+	}
+
+	public Salon getSalon() {
+		return salon;
+	}
+
+	public void setSalon(Salon salon) {
+		this.salon = salon;
 	}
 
 	public NearStation(String type, String nameStation, String distance) {
