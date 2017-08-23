@@ -13,14 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.entity.HairSalon;
-import com.example.repository.HairSaloonRepository;
+import com.example.repository.SalonRepository;
 
 @RestController
 public class BotController {
 
 	@Autowired
-	HairSaloonRepository hairSaloonRepository;
+	SalonRepository salonRepository;
 
 	@RequestMapping("/resource")
 	public Map<String, Object> home() {
@@ -39,10 +38,8 @@ public class BotController {
 
 		String shippingZone = jiji.getJSONObject("result").getJSONObject("parameters").getString("shipping-zone");
 
-		HairSalon hairSalon = hairSaloonRepository.getHairSaloonByZone(shippingZone);
-
-		json.put("speech", " The name of the Hair salOon in " + shippingZone + " is : " + hairSalon.getName());
-		json.put("displayText", " The name of the Hair salon in " + shippingZone + " is : " + hairSalon.getName());
+		json.put("speech", " The name of the Hair salOon in " + shippingZone + " is : ");
+		json.put("displayText", " The name of the Hair salon in " + shippingZone + " is : ");
 		json.put("source", "apiai-onlinestore-shipping");
 
 		return json;
