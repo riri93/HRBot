@@ -23,13 +23,17 @@ public class BotController {
 
 		String eventName = jiji.getJSONObject("event").getString("name");
 
-		if(eventName.equals("welcome")) {
+		System.out.println("event lkol : " + jiji.getJSONObject("event"));
+
+		System.out.println("eventName : " + eventName);
+
+		if (eventName.equals("welcome")) {
 			json.put("speech", " hhhhhhhhhhhhhhh");
 			json.put("displayText", " Do you have an account? ");
 			json.put("source", "apiai-onlinestore-shipping");
 
 		}
-		
+
 		return json;
 
 	}
