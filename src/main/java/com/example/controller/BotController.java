@@ -2,7 +2,6 @@ package com.example.controller;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,14 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class BotController {
 
-	@RequestMapping("/resource")
-	public Map<String, Object> home() {
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("id", UUID.randomUUID().toString());
-		model.put("content", "Hello World");
-		return model;
-	}
-
 	@RequestMapping(value = "/webhook", method = RequestMethod.POST)
 	private @ResponseBody Map<String, Object> webhook(@RequestBody Map<String, Object> obj) throws JSONException {
 
@@ -30,12 +21,15 @@ public class BotController {
 
 		JSONObject jiji = new JSONObject(obj);
 
-		String shippingZone = jiji.getJSONObject("result").getJSONObject("parameters").getString("shipping-zone");
+		String eventName = jiji.getJSONObject("event").getString("name");
 
-		json.put("speech", " The name of the Hair salOon in " + shippingZone + " is : ");
-		json.put("displayText", " The name of the Hair salon in " + shippingZone + " is : ");
-		json.put("source", "apiai-onlinestore-shipping");
+		if(eventName.equals("welcome")) {
+			json.put("speech", " hhhhhhhhhhhhhhh");
+			json.put("displayText", " Do you have an account? ");
+			json.put("source", "apiai-onlinestore-shipping");
 
+		}
+		
 		return json;
 
 	}
