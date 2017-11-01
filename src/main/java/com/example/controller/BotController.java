@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,16 +16,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class BotController {
 
 	@RequestMapping(value = "/webhook", method = RequestMethod.POST)
-	private @ResponseBody Map<String, Object> webhook(@RequestBody Map<String, Object> obj) throws JSONException {
+	private @ResponseBody Map<String, Object> webhook(@RequestBody Map<String, Object> map)
+			throws JSONException, IOException {
 
-		System.out.println("WEBHOOOOOOOOOOK");
+		System.out.println("*******************WEBHOOOOOOOOOOK*******************");
+
 		Map<String, Object> json = new HashMap<String, Object>();
 
-		//JSONObject jiji = new JSONObject(obj);
+		// JSONObject jiji = new JSONObject(obj);
 
-		System.out.println("obj : " + obj);
+		System.out.println("map : " + map);
+		System.out.println("map : " + map.get("result"));
 
-		//System.out.println("jiji : " + jiji.getJSONObject("result"));
+		// System.out.println("jiji : " + jiji.getJSONObject("result"));
 
 		// String eventName = jiji.getJSONObject("event").getString("name");
 		//
