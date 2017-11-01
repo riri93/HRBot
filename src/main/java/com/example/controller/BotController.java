@@ -23,7 +23,7 @@ public class BotController {
 
 		JSONObject jiji = new JSONObject(obj);
 
-		System.out.println("jiji : " + jiji);
+		System.out.println("jiji : " + jiji.getJSONObject("result"));
 
 		// String eventName = jiji.getJSONObject("event").getString("name");
 		//
