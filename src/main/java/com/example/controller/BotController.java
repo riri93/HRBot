@@ -17,6 +17,8 @@ public class BotController {
 	@RequestMapping(value = "/webhook", method = RequestMethod.POST)
 	private @ResponseBody Map<String, Object> webhook(@RequestBody Map<String, Object> obj) throws JSONException {
 
+		System.out.println("WEBHOOOOOOOOOOK");
+		
 		Map<String, Object> json = new HashMap<String, Object>();
 
 		JSONObject jiji = new JSONObject(obj);
