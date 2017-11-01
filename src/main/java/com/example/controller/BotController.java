@@ -21,20 +21,19 @@ public class BotController {
 		
 		Map<String, Object> json = new HashMap<String, Object>();
 
-		JSONObject jiji = new JSONObject(obj);
-
-		String eventName = jiji.getJSONObject("event").getString("name");
-
-		System.out.println("event lkol : " + jiji.getJSONObject("event"));
-
-		System.out.println("eventName : " + eventName);
-
-		if (eventName.equals("welcome")) {
-			json.put("speech", " hhhhhhhhhhhhhhh");
-			json.put("displayText", " Do you have an account? ");
-			json.put("source", "apiai-onlinestore-shipping");
-
-		}
+//		JSONObject jiji = new JSONObject(obj);
+//		String eventName = jiji.getJSONObject("event").getString("name");
+//
+//		System.out.println("event lkol : " + jiji.getJSONObject("event"));
+//
+//		System.out.println("eventName : " + eventName);
+//
+//		if (eventName.equals("welcome")) {
+//			json.put("speech", " hhhhhhhhhhhhhhh");
+//			json.put("displayText", " Do you have an account? ");
+//			json.put("source", "apiai-onlinestore-shipping");
+//
+//		}
 
 		return json;
 
