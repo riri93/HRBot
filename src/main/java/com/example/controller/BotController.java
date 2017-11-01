@@ -20,11 +20,11 @@ public class BotController {
 		System.out.println("WEBHOOOOOOOOOOK");
 		Map<String, Object> json = new HashMap<String, Object>();
 
-		JSONObject jiji = new JSONObject(obj);
+		//JSONObject jiji = new JSONObject(obj);
 
 		System.out.println("obj : " + obj);
 
-		System.out.println("jiji : " + jiji.getJSONObject("result"));
+		//System.out.println("jiji : " + jiji.getJSONObject("result"));
 
 		// String eventName = jiji.getJSONObject("event").getString("name");
 		//
