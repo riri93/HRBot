@@ -18,22 +18,25 @@ public class BotController {
 	private @ResponseBody Map<String, Object> webhook(@RequestBody Map<String, Object> obj) throws JSONException {
 
 		System.out.println("WEBHOOOOOOOOOOK");
-		
+
 		Map<String, Object> json = new HashMap<String, Object>();
 
 		JSONObject jiji = new JSONObject(obj);
-		String eventName = jiji.getJSONObject("event").getString("name");
 
-		System.out.println("event lkol : " + jiji.getJSONObject("event"));
+		System.out.println("jiji : " + jiji);
 
-		System.out.println("eventName : " + eventName);
-
-		if (eventName.equals("welcome")) {
-			json.put("speech", " hhhhhhhhhhhhhhh");
-			json.put("displayText", " Do you have an account? ");
-			json.put("source", "apiai-onlinestore-shipping");
-
-		}
+		// String eventName = jiji.getJSONObject("event").getString("name");
+		//
+		// System.out.println("event lkol : " + jiji.getJSONObject("event"));
+		//
+		// System.out.println("eventName : " + eventName);
+		//
+		// if (eventName.equals("welcome")) {
+		// json.put("speech", " hhhhhhhhhhhhhhh");
+		// json.put("displayText", " Do you have an account? ");
+		// json.put("source", "apiai-onlinestore-shipping");
+		//
+		// }
 
 		return json;
 
