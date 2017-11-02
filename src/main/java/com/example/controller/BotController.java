@@ -83,19 +83,19 @@ public class BotController {
 
 		Document doc = Jsoup.connect("http://www.cjs.ne.jp/detail_b/T0000115892.html").get();
 		System.out.println("title : " + doc.title());
-
+		System.out.println("class image: " + doc.select("p").select("img").attr("class"));
 		if (doc.select("p").select("img").attr("class").equals("max-width-260")) {
 			System.out.println("img : " + doc.select("img").attr("abs:src"));
 
 		}
 
-		if (customerMessage.equals("osaka") || customerMessage.equals("Osaka")) {
-			carouselForUser(userId, channelToken, "Mutsuko", "Orino",
-					"https://i.pinimg.com/736x/96/a0/54/96a0544ab7b6fa7cbdddff9c5d8397be--japanese-hairstyles-korean-hairstyles.jpg",
-					"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTH27Sxx6jQ5IraidAQovMU1OTnQWL-hqfN0kiEF5JoRXVoQ8N-g");
-		} else {
-
-		}
+		// if (customerMessage.equals("osaka") || customerMessage.equals("Osaka")) {
+		// carouselForUser(userId, channelToken, "Mutsuko", "Orino",
+		// "https://i.pinimg.com/736x/96/a0/54/96a0544ab7b6fa7cbdddff9c5d8397be--japanese-hairstyles-korean-hairstyles.jpg",
+		// "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTH27Sxx6jQ5IraidAQovMU1OTnQWL-hqfN0kiEF5JoRXVoQ8N-g");
+		// } else {
+		//
+		// }
 
 		return json;
 
