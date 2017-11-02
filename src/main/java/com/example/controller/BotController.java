@@ -63,6 +63,8 @@ public class BotController {
 		JSONObject fulfillment = result.getJSONObject("fulfillment");
 		String speech = fulfillment.getString("speech");
 
+		System.out.println("parameters : " + parameters);
+
 		Random rand = new Random();
 		java.util.List<String> sampleLinksOsaka = new ArrayList<>();
 		java.util.List<String> sampleLinksTokyo = new ArrayList<>();
@@ -78,11 +80,11 @@ public class BotController {
 		sampleLinksOsaka.add("http://www.cjs.ne.jp/detail_b/T0000242702.html");
 
 		sampleLinksTokyo.add("http://www.cjs.ne.jp/detail_b/T0000430079.html");
-		sampleLinksTokyo.add("http:// www.cjs.ne.jp/detail_b/T0000016010.html");
-		sampleLinksTokyo.add("http:// www.cjs.ne.jp/detail_b/T0000075865.html");
-		sampleLinksTokyo.add("http:// www.cjs.ne.jp/detail_b/T0000007615.html");
-		sampleLinksTokyo.add("http:// www.cjs.ne.jp/detail_b/T0000007413.html");
-		sampleLinksTokyo.add("http:// www.cjs.ne.jp/detail_b/T0000255552.html");
+		sampleLinksTokyo.add("http://www.cjs.ne.jp/detail_b/T0000016010.html");
+		sampleLinksTokyo.add("http://www.cjs.ne.jp/detail_b/T0000075865.html");
+		sampleLinksTokyo.add("http://www.cjs.ne.jp/detail_b/T0000007615.html");
+		sampleLinksTokyo.add("http://www.cjs.ne.jp/detail_b/T0000007413.html");
+		sampleLinksTokyo.add("http://www.cjs.ne.jp/detail_b/T0000255552.html");
 
 		for (int i = 0; i < 5; i++) {
 			randomLinksOsaka.add(sampleLinksOsaka.get(rand.nextInt(sampleLinksOsaka.size())));
@@ -123,10 +125,6 @@ public class BotController {
 			Document doc = Jsoup.connect(link).get();
 			String title = doc.title();
 			String img = doc.getElementsByClass("max-width-260").get(0).attr("abs:src");
-
-			System.out.println("link : " + link);
-			System.out.println("title : " + title);
-			System.out.println("img : " + img);
 
 			CarouselColumn column = new CarouselColumn(img, title, "Select one for more info",
 					Arrays.asList(new MessageAction("check", "check \"" + title + "\"")));
