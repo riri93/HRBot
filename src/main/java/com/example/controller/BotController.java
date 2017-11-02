@@ -102,14 +102,16 @@ public class BotController {
 			}
 		}
 
-		if (customerMessage.toLowerCase().equals("osaka")
-				|| (parameters != null && parameters.getString("japan-cities").toLowerCase().equals("osaka"))) {
-			carouselForUser(userId, channelToken, randomLinksOsaka);
-		} else if (customerMessage.toLowerCase().equals("tokyo")
-				|| (parameters != null && parameters.getString("japan-cities").toLowerCase().equals("tokyo"))) {
-			carouselForUser(userId, channelToken, randomLinksTokyo);
-		}
+		if (intentName != "Default Fallback Intent") {
+			if (customerMessage.toLowerCase().equals("osaka")
+					|| (parameters != null && parameters.getString("japan-cities").toLowerCase().equals("osaka"))) {
+				carouselForUser(userId, channelToken, randomLinksOsaka);
+			} else if (customerMessage.toLowerCase().equals("tokyo")
+					|| (parameters != null && parameters.getString("japan-cities").toLowerCase().equals("tokyo"))) {
+				carouselForUser(userId, channelToken, randomLinksTokyo);
+			}
 
+		}
 		return json;
 
 	}
