@@ -102,7 +102,8 @@ public class BotController {
 			}
 		}
 
-		if (intentName != "Default Fallback Intent") {
+		if (!intentName.equals("Default Fallback Intent")) {
+			System.out.println("hahahahahahahah");
 			if (customerMessage.toLowerCase().equals("osaka")
 					|| (parameters != null && parameters.getString("japan-cities").toLowerCase().equals("osaka"))) {
 				carouselForUser(userId, channelToken, randomLinksOsaka);
