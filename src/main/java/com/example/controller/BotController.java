@@ -49,8 +49,6 @@ public class BotController {
 
 		JSONObject jsonResult = new JSONObject(obj);
 
-		System.out.println("jsonResult : " + jsonResult);
-
 		JSONObject rsl = jsonResult.getJSONObject("originalRequest");
 		JSONObject data = rsl.getJSONObject("data");
 		JSONObject source = data.getJSONObject("source");
@@ -125,6 +123,10 @@ public class BotController {
 			Document doc = Jsoup.connect(link).get();
 			String title = doc.title();
 			String img = doc.getElementsByClass("max-width-260").get(0).attr("abs:src");
+
+			System.out.println("link : " + link);
+			System.out.println("title : " + title);
+			System.out.println("img : " + img);
 
 			CarouselColumn column = new CarouselColumn(img, title, "Select one for more info",
 					Arrays.asList(new MessageAction("check", "check \"" + title + "\"")));
