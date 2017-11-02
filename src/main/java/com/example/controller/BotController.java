@@ -26,7 +26,6 @@ public class BotController {
 
 		// JSONObject jiji = new JSONObject(obj);
 
-		JSONArray sizeArray = new JSONArray();
 		JSONObject sizeItem = new JSONObject();
 		JSONArray areasArray = new JSONArray();
 		JSONObject areasItem = new JSONObject();
@@ -37,11 +36,10 @@ public class BotController {
 
 		sizeItem.put("width", 2500);
 		sizeItem.put("height", 1686);
-		sizeArray.put(sizeItem);
 
-		json.put("size", sizeArray);
+		json.put("size", sizeItem);
 		json.put("selected", false);
-		json.put("name", "nice rich menu");
+		json.put("name", "nice richmenu");
 		json.put("chatBarText", "touch me");
 
 		boundsItem.put("x", 0);
