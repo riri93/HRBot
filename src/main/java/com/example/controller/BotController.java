@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,6 +9,10 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Node;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,6 +30,7 @@ import com.linecorp.bot.model.message.template.CarouselTemplate;
 import com.linecorp.bot.model.profile.UserProfileResponse;
 import com.linecorp.bot.model.response.BotApiResponse;
 
+import antlr.collections.List;
 import retrofit2.Response;
 
 @RestController
@@ -58,11 +64,35 @@ public class BotController {
 		JSONObject fulfillment = result.getJSONObject("fulfillment");
 		String speech = fulfillment.getString("speech");
 
-		if (customerMessage.equals("osaka")) {
+		java.util.List<String> sampleLinksOsaka = new ArrayList<>();
+		java.util.List<String> sampleLinksTokyo = new ArrayList<>();
+
+		sampleLinksOsaka.add("http://www.cjs.ne.jp/detail_b/T0000115892.html");
+		sampleLinksOsaka.add("http://www.cjs.ne.jp/detail_b/T0000394280.html");
+		sampleLinksOsaka.add("http://www.cjs.ne.jp/detail_b/T0000282562.html");
+		sampleLinksOsaka.add("http://www.cjs.ne.jp/detail_b/T0000301712.html");
+		sampleLinksOsaka.add("http://www.cjs.ne.jp/detail_b/T0000245299.html");
+		sampleLinksOsaka.add("http://www.cjs.ne.jp/detail_b/T0000242702.html");
+
+		sampleLinksTokyo.add("http://www.cjs.ne.jp/detail_b/T0000430079.html");
+		sampleLinksTokyo.add("http: // www.cjs.ne.jp/detail_b/T0000016010.html");
+		sampleLinksTokyo.add("http: // www.cjs.ne.jp/detail_b/T0000075865.html");
+		sampleLinksTokyo.add("http: // www.cjs.ne.jp/detail_b/T0000007615.html");
+		sampleLinksTokyo.add("http: // www.cjs.ne.jp/detail_b/T0000007413.html");
+		sampleLinksTokyo.add("http: // www.cjs.ne.jp/detail_b/T0000255552.html");
+
+		Document doc = Jsoup.connect("http://www.cjs.ne.jp/detail_b/T0000115892.html").get();
+		System.out.println("title : " + doc.select("title"));
+
+		if (doc.select("p").select("img").attr("name").equals("max-width-260")) {
+			System.out.println("img : " + doc.select("img").attr("abs:src"));
+
+		}
+
+		if (customerMessage.equals("osaka") || customerMessage.equals("Osaka")) {
 			carouselForUser(userId, channelToken, "Mutsuko", "Orino",
 					"https://i.pinimg.com/736x/96/a0/54/96a0544ab7b6fa7cbdddff9c5d8397be--japanese-hairstyles-korean-hairstyles.jpg",
 					"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTH27Sxx6jQ5IraidAQovMU1OTnQWL-hqfN0kiEF5JoRXVoQ8N-g");
-
 		} else {
 
 		}
@@ -94,6 +124,7 @@ public class BotController {
 								new MessageAction("Call", "Call \"" + nameSatff2 + "\""),
 								new MessageAction("Send email", "Send email \"" + nameSatff2 + "\""),
 								new MessageAction("Availability of", "Availability of \"" + nameSatff2 + "\"")))));
+
 		TemplateMessage templateMessage = new TemplateMessage("Your search result", carouselTemplate);
 		PushMessage pushMessage = new PushMessage(userId, templateMessage);
 		try {
