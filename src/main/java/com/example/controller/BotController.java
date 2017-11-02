@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.linecorp.bot.client.LineMessagingServiceBuilder;
 import com.linecorp.bot.model.PushMessage;
-import com.linecorp.bot.model.action.MessageAction;
 import com.linecorp.bot.model.action.URIAction;
 import com.linecorp.bot.model.message.TemplateMessage;
 import com.linecorp.bot.model.message.template.CarouselColumn;
@@ -34,7 +33,7 @@ public class BotController {
 	private @ResponseBody Map<String, Object> webhook(@RequestBody Map<String, Object> obj)
 			throws JSONException, IOException {
 
-		String channelToken = "pW48DucPjjO3rTx7SLMA9Ui98uVQjB+O0xLGqHs+PJynEdKiNBnva1pLSw5IJP0uOdwrR+Am4xkVm4kopj6GnsUvIyc0GqXQ4+oMUXT4OyS6zDN+2pHc20uHD0mLFQNsXWlPo9P1j89m6g2CG4mnmAdB04t89/1O/w1cDnyilFU=";
+		String channelToken = "CqLM9SJd77pSTss73OSXTNJZFs+vajIE2YZtsMqWMWN6NY+9FlFdNr4+FI9If8CRzU2xCX/E+XbGSKhGZnQTeGBf/oJIugROLO1n85hnQVSUp3X7bUxCJVCGi+l/lp9fcobhuwFeKn9vr2VMuIpSKwdB04t89/1O/w1cDnyilFU=";
 
 		Map<String, Object> json = new HashMap<String, Object>();
 
