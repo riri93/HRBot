@@ -24,41 +24,23 @@ public class BotController {
 
 		Map<String, Object> json = new HashMap<String, Object>();
 
-		// JSONObject jiji = new JSONObject(obj);
+		JSONObject jsonResult = new JSONObject(obj);
 
-		JSONObject sizeItem = new JSONObject();
-		JSONArray areasArray = new JSONArray();
-		JSONObject areasItem = new JSONObject();
-		JSONArray boundsArray = new JSONArray();
-		JSONArray actionsArray = new JSONArray();
-		JSONObject boundsItem = new JSONObject();
-		JSONObject actionsItem = new JSONObject();
+		System.out.println("jsonResult : " + jsonResult);
 
-		sizeItem.put("width", 2500);
-		sizeItem.put("height", 1686);
-
-		json.put("size", sizeItem);
-		json.put("selected", false);
-		json.put("name", "nice richmenu");
-		json.put("chatBarText", "touch me");
-
-		boundsItem.put("x", 0);
-		boundsItem.put("y", 0);
-		boundsItem.put("width", 2500);
-		boundsItem.put("height", 1686);
-		boundsArray.put(boundsItem);
-
-		actionsItem.put("type", "postback");
-		actionsItem.put("data", "action=buy&itemid=123");
-		actionsArray.put(boundsItem);
-
-		areasItem.put("bounds", boundsArray);
-		areasItem.put("action", actionsArray);
-		areasArray.put(areasItem);
-
-		json.put("areas", areasArray);
-
-		System.out.println("json : " + json);
+//		JSONObject rsl = jsonResult.getJSONObject("originalRequest");
+//		JSONObject data = rsl.getJSONObject("data");
+//		JSONObject source = data.getJSONObject("source");
+//		JSONObject message = data.getJSONObject("message");
+//		String userId = source.getString("userId");
+//		String customerMessage = message.getString("text");
+//		String timestamp = jsonResult.getString("timestamp");
+//		JSONObject result = jsonResult.getJSONObject("result");
+//		JSONObject metadata = result.getJSONObject("metadata");
+//		String intentName = metadata.getString("intentName");
+//		JSONObject parameters = result.getJSONObject("parameters");
+//		JSONObject fulfillment = result.getJSONObject("fulfillment");
+//		String speech = fulfillment.getString("speech");
 
 		return json;
 
