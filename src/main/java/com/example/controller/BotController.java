@@ -3,35 +3,27 @@ package com.example.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.nodes.Node;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.linecorp.bot.client.LineMessagingService;
 import com.linecorp.bot.client.LineMessagingServiceBuilder;
 import com.linecorp.bot.model.PushMessage;
 import com.linecorp.bot.model.action.MessageAction;
-import com.linecorp.bot.model.message.ImageMessage;
 import com.linecorp.bot.model.message.TemplateMessage;
 import com.linecorp.bot.model.message.template.CarouselColumn;
 import com.linecorp.bot.model.message.template.CarouselTemplate;
-import com.linecorp.bot.model.profile.UserProfileResponse;
 import com.linecorp.bot.model.response.BotApiResponse;
 
-import antlr.collections.List;
 import retrofit2.Response;
 
 @RestController
@@ -63,11 +55,6 @@ public class BotController {
 		JSONObject fulfillment = result.getJSONObject("fulfillment");
 		String speech = fulfillment.getString("speech");
 
-		System.out.println("intentName : " + intentName);
-
-		System.out.println("parameters : " + parameters);
-
-		Random rand = new Random();
 		java.util.List<String> sampleLinksOsaka = new ArrayList<>();
 		java.util.List<String> sampleLinksTokyo = new ArrayList<>();
 
@@ -88,18 +75,15 @@ public class BotController {
 		sampleLinksTokyo.add("http://www.cjs.ne.jp/detail_b/T0000007413.html");
 		sampleLinksTokyo.add("http://www.cjs.ne.jp/detail_b/T0000255552.html");
 
+		Collections.shuffle(sampleLinksOsaka);
+		Collections.shuffle(sampleLinksTokyo);
+
 		for (int i = 0; i < 5; i++) {
-			int r = rand.nextInt(sampleLinksOsaka.size());
-			if (!randomLinksOsaka.contains(sampleLinksOsaka.get(r))) {
-				randomLinksOsaka.add(sampleLinksOsaka.get(r));
-			}
+			randomLinksOsaka.add(sampleLinksOsaka.get(i));
 		}
 
 		for (int i = 0; i < 5; i++) {
-			int r = rand.nextInt(sampleLinksTokyo.size());
-			if (!randomLinksTokyo.contains(sampleLinksTokyo.get(r))) {
-				randomLinksTokyo.add(sampleLinksTokyo.get(r));
-			}
+			randomLinksTokyo.add(sampleLinksTokyo.get(i));
 		}
 
 		if (!intentName.equals("Default Fallback Intent")) {
@@ -137,8 +121,6 @@ public class BotController {
 			Document doc = Jsoup.connect(link).get();
 			String title = doc.getElementsByClass("tit_articleName").get(0).text();
 			String img = doc.getElementsByClass("max-width-260").get(0).attr("abs:src");
-
-			System.out.println("title : " + title);
 
 			CarouselColumn column = new CarouselColumn(img, title, "Select one for more info",
 					Arrays.asList(new MessageAction("check", "check \"" + title + "\"")));
