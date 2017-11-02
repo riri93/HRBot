@@ -94,9 +94,11 @@ public class BotController {
 			randomLinksTokyo.add(sampleLinksTokyo.get(rand.nextInt(sampleLinksTokyo.size())));
 		}
 
-		if (customerMessage.equals("osaka") || customerMessage.equals("Osaka")) {
+		if (customerMessage.toLowerCase().equals("osaka")
+				|| parameters.getString("japan-cities").toLowerCase().equals("osaka")) {
 			carouselForUser(userId, channelToken, randomLinksOsaka);
-		} else if (customerMessage.equals("tokyo") || customerMessage.equals("Tokyo")) {
+		} else if (customerMessage.toLowerCase().equals("tokyo")
+				|| parameters.getString("japan-cities").toLowerCase().equals("tokyo")) {
 			carouselForUser(userId, channelToken, randomLinksTokyo);
 		}
 
