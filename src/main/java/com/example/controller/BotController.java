@@ -24,9 +24,9 @@ public class BotController {
 		Map<String, Object> json = new HashMap<String, Object>();
 
 		// JSONObject jiji = new JSONObject(obj);
-
-		System.out.println("map : " + map);
-		System.out.println("map event : " + map.get("event"));
+//
+//		System.out.println("map : " + map);
+//		System.out.println("map event : " + map.get("event"));
 
 		// System.out.println("jiji : " + jiji.getJSONObject("result"));
 
