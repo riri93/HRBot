@@ -101,10 +101,10 @@ public class BotController {
 		}
 
 		if (customerMessage.toLowerCase().equals("osaka")
-				|| parameters.getString("japan-cities").toLowerCase().equals("osaka")) {
+				|| (parameters != null && parameters.getString("japan-cities").toLowerCase().equals("osaka"))) {
 			carouselForUser(userId, channelToken, randomLinksOsaka);
 		} else if (customerMessage.toLowerCase().equals("tokyo")
-				|| parameters.getString("japan-cities").toLowerCase().equals("tokyo")) {
+				|| (parameters != null && parameters.getString("japan-cities").toLowerCase().equals("tokyo"))) {
 			carouselForUser(userId, channelToken, randomLinksTokyo);
 		}
 
