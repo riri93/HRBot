@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.linecorp.bot.client.LineMessagingServiceBuilder;
 import com.linecorp.bot.model.PushMessage;
 import com.linecorp.bot.model.action.MessageAction;
+import com.linecorp.bot.model.action.URIAction;
 import com.linecorp.bot.model.message.TemplateMessage;
 import com.linecorp.bot.model.message.template.CarouselColumn;
 import com.linecorp.bot.model.message.template.CarouselTemplate;
@@ -120,7 +121,7 @@ public class BotController {
 			String img = doc.getElementsByClass("max-width-260").get(0).attr("abs:src");
 
 			CarouselColumn column = new CarouselColumn(img, title, "Click check for more details",
-					Arrays.asList(new MessageAction("check", link)));
+					Arrays.asList(new URIAction("check", link)));
 			columns.add(column);
 		}
 
