@@ -103,7 +103,6 @@ public class BotController {
 		}
 
 		if (!intentName.equals("Default Fallback Intent")) {
-			System.out.println("hahahahahahahah");
 			if (customerMessage.toLowerCase().equals("osaka")
 					|| (parameters != null && parameters.getString("japan-cities").toLowerCase().equals("osaka"))) {
 				carouselForUser(userId, channelToken, randomLinksOsaka);
@@ -136,8 +135,10 @@ public class BotController {
 		for (String link : randomLinks) {
 
 			Document doc = Jsoup.connect(link).get();
-			String title = doc.title();
+			String title = doc.getElementsByClass("tit_articleName").get(0).text();
 			String img = doc.getElementsByClass("max-width-260").get(0).attr("abs:src");
+
+			System.out.println("title : " + title);
 
 			CarouselColumn column = new CarouselColumn(img, title, "Select one for more info",
 					Arrays.asList(new MessageAction("check", "check \"" + title + "\"")));
