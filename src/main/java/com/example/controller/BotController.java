@@ -78,11 +78,11 @@ public class BotController {
 		sampleLinksOsaka.add("http://www.cjs.ne.jp/detail_b/T0000242702.html");
 
 		sampleLinksTokyo.add("http://www.cjs.ne.jp/detail_b/T0000430079.html");
-		sampleLinksTokyo.add("http: // www.cjs.ne.jp/detail_b/T0000016010.html");
-		sampleLinksTokyo.add("http: // www.cjs.ne.jp/detail_b/T0000075865.html");
-		sampleLinksTokyo.add("http: // www.cjs.ne.jp/detail_b/T0000007615.html");
-		sampleLinksTokyo.add("http: // www.cjs.ne.jp/detail_b/T0000007413.html");
-		sampleLinksTokyo.add("http: // www.cjs.ne.jp/detail_b/T0000255552.html");
+		sampleLinksTokyo.add("http:// www.cjs.ne.jp/detail_b/T0000016010.html");
+		sampleLinksTokyo.add("http:// www.cjs.ne.jp/detail_b/T0000075865.html");
+		sampleLinksTokyo.add("http:// www.cjs.ne.jp/detail_b/T0000007615.html");
+		sampleLinksTokyo.add("http:// www.cjs.ne.jp/detail_b/T0000007413.html");
+		sampleLinksTokyo.add("http:// www.cjs.ne.jp/detail_b/T0000255552.html");
 
 		for (int i = 0; i < 5; i++) {
 			randomLinksOsaka.add(sampleLinksOsaka.get(rand.nextInt(sampleLinksOsaka.size())));
