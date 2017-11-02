@@ -82,9 +82,9 @@ public class BotController {
 		sampleLinksTokyo.add("http: // www.cjs.ne.jp/detail_b/T0000255552.html");
 
 		Document doc = Jsoup.connect("http://www.cjs.ne.jp/detail_b/T0000115892.html").get();
-		System.out.println("title : " + doc.select("title"));
+		System.out.println("title : " + doc.title());
 
-		if (doc.select("p").select("img").attr("name").equals("max-width-260")) {
+		if (doc.select("p").select("img").attr("class").equals("max-width-260")) {
 			System.out.println("img : " + doc.select("img").attr("abs:src"));
 
 		}
