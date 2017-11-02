@@ -63,6 +63,8 @@ public class BotController {
 		JSONObject fulfillment = result.getJSONObject("fulfillment");
 		String speech = fulfillment.getString("speech");
 
+		System.out.println("intentName : " + intentName);
+
 		System.out.println("parameters : " + parameters);
 
 		Random rand = new Random();
