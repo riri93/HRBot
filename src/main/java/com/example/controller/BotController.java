@@ -33,8 +33,6 @@ public class BotController {
 	private @ResponseBody Map<String, Object> webhook(@RequestBody Map<String, Object> obj)
 			throws JSONException, IOException {
 
-		System.out.println("*******************WEBHOOOOOOOOOOK*******************");
-
 		String channelToken = "pW48DucPjjO3rTx7SLMA9Ui98uVQjB+O0xLGqHs+PJynEdKiNBnva1pLSw5IJP0uOdwrR+Am4xkVm4kopj6GnsUvIyc0GqXQ4+oMUXT4OyS6zDN+2pHc20uHD0mLFQNsXWlPo9P1j89m6g2CG4mnmAdB04t89/1O/w1cDnyilFU=";
 
 		Map<String, Object> json = new HashMap<String, Object>();
@@ -94,8 +92,8 @@ public class BotController {
 					|| (parameters != null && parameters.getString("japan-cities").toLowerCase().equals("tokyo"))) {
 				carouselForUser(userId, channelToken, randomLinksTokyo);
 			}
-
 		}
+
 		return json;
 
 	}
@@ -117,15 +115,13 @@ public class BotController {
 		java.util.List<CarouselColumn> columns = new ArrayList<>();
 
 		for (String link : randomLinks) {
-
 			Document doc = Jsoup.connect(link).get();
 			String title = doc.getElementsByClass("tit_articleName").get(0).text();
 			String img = doc.getElementsByClass("max-width-260").get(0).attr("abs:src");
 
-			CarouselColumn column = new CarouselColumn(img, title, "Select one for more info",
-					Arrays.asList(new MessageAction("check", "check \"" + title + "\"")));
+			CarouselColumn column = new CarouselColumn(img, title, "Click check for more details",
+					Arrays.asList(new MessageAction("check", link)));
 			columns.add(column);
-
 		}
 
 		CarouselTemplate carouselTemplate = new CarouselTemplate(columns);
