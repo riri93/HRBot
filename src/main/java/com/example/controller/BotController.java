@@ -84,7 +84,10 @@ public class BotController {
 		Document doc = Jsoup.connect("http://www.cjs.ne.jp/detail_b/T0000115892.html").get();
 		System.out.println("title : " + doc.title());
 		System.out.println("class image: " + doc.select("p").select("img").attr("class"));
-		if (doc.select("p").select("img").attr("class").equals("max-width-260")) {
+		
+		if (doc.select("section").attr("id").equals("info-top")
+				&& doc.select("p").select("img").attr("class").equals("max-width-260")
+				&& doc.select("p").attr("class").equals("img floatLeft width-260")) {
 			System.out.println("img : " + doc.select("img").attr("abs:src"));
 
 		}
