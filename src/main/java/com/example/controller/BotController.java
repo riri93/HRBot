@@ -87,11 +87,17 @@ public class BotController {
 		sampleLinksTokyo.add("http://www.cjs.ne.jp/detail_b/T0000255552.html");
 
 		for (int i = 0; i < 5; i++) {
-			randomLinksOsaka.add(sampleLinksOsaka.get(rand.nextInt(sampleLinksOsaka.size())));
+			int r = rand.nextInt(sampleLinksOsaka.size());
+			if (!randomLinksOsaka.contains(sampleLinksOsaka.get(r))) {
+				randomLinksOsaka.add(sampleLinksOsaka.get(r));
+			}
 		}
 
 		for (int i = 0; i < 5; i++) {
-			randomLinksTokyo.add(sampleLinksTokyo.get(rand.nextInt(sampleLinksTokyo.size())));
+			int r = rand.nextInt(sampleLinksTokyo.size());
+			if (!randomLinksTokyo.contains(sampleLinksTokyo.get(r))) {
+				randomLinksTokyo.add(sampleLinksTokyo.get(r));
+			}
 		}
 
 		if (customerMessage.toLowerCase().equals("osaka")
