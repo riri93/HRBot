@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -64,8 +65,12 @@ public class BotController {
 		JSONObject fulfillment = result.getJSONObject("fulfillment");
 		String speech = fulfillment.getString("speech");
 
+		Random rand = new Random();
 		java.util.List<String> sampleLinksOsaka = new ArrayList<>();
 		java.util.List<String> sampleLinksTokyo = new ArrayList<>();
+
+		java.util.List<String> randomLinksOsaka = new ArrayList<>();
+		java.util.List<String> randomLinksTokyo = new ArrayList<>();
 
 		sampleLinksOsaka.add("http://www.cjs.ne.jp/detail_b/T0000115892.html");
 		sampleLinksOsaka.add("http://www.cjs.ne.jp/detail_b/T0000394280.html");
@@ -81,27 +86,19 @@ public class BotController {
 		sampleLinksTokyo.add("http: // www.cjs.ne.jp/detail_b/T0000007413.html");
 		sampleLinksTokyo.add("http: // www.cjs.ne.jp/detail_b/T0000255552.html");
 
-		Document doc = Jsoup.connect("http://www.cjs.ne.jp/detail_b/T0000115892.html").get();
-		System.out.println("title : " + doc.title());
-		Element section = doc.getElementById("info-top");
-		System.out.println("section : " + section);
-		Element img = doc.getElementsByClass("max-width-260").get(0);
-		System.out.println("img : " + img);
+		for (int i = 0; i < 5; i++) {
+			randomLinksOsaka.add(sampleLinksOsaka.get(rand.nextInt(sampleLinksOsaka.size())));
+		}
 
-		// if (doc.select("section").attr("id").equals("info-top")
-		// && doc.select("p").select("img").attr("class").equals("max-width-260")
-		// && doc.select("p").attr("class").equals("img floatLeft width-260")) {
-		// System.out.println("img : " + doc.select("img").attr("abs:src"));
-		//
-		// }
+		for (int i = 0; i < 5; i++) {
+			randomLinksTokyo.add(sampleLinksTokyo.get(rand.nextInt(sampleLinksTokyo.size())));
+		}
 
-		// if (customerMessage.equals("osaka") || customerMessage.equals("Osaka")) {
-		// carouselForUser(userId, channelToken, "Mutsuko", "Orino",
-		// "https://i.pinimg.com/736x/96/a0/54/96a0544ab7b6fa7cbdddff9c5d8397be--japanese-hairstyles-korean-hairstyles.jpg",
-		// "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTH27Sxx6jQ5IraidAQovMU1OTnQWL-hqfN0kiEF5JoRXVoQ8N-g");
-		// } else {
-		//
-		// }
+		if (customerMessage.equals("osaka") || customerMessage.equals("Osaka")) {
+			carouselForUser(userId, channelToken, randomLinksOsaka);
+		} else if (customerMessage.equals("tokyo") || customerMessage.equals("Tokyo")) {
+			carouselForUser(userId, channelToken, randomLinksTokyo);
+		}
 
 		return json;
 
@@ -116,20 +113,26 @@ public class BotController {
 	 * @param nameSatff2
 	 * @param poster1_url
 	 * @param poster2_url
+	 * @throws IOException
 	 */
-	private void carouselForUser(String userId, String lChannelAccessToken, String nameSatff1, String nameSatff2,
-			String poster1_url, String poster2_url) {
-		CarouselTemplate carouselTemplate = new CarouselTemplate(
-				Arrays.asList(
-						new CarouselColumn(poster1_url, nameSatff1, "Select one for more info",
-								Arrays.asList(new MessageAction("Call", "Call \"" + nameSatff1 + "\""),
-										new MessageAction("Send email", "Send email \"" + nameSatff1 + "\""),
-										new MessageAction("Availability of",
-												"Availability of \"" + nameSatff1 + "\""))),
-						new CarouselColumn(poster2_url, nameSatff2, "Select one for more info", Arrays.asList(
-								new MessageAction("Call", "Call \"" + nameSatff2 + "\""),
-								new MessageAction("Send email", "Send email \"" + nameSatff2 + "\""),
-								new MessageAction("Availability of", "Availability of \"" + nameSatff2 + "\"")))));
+	private void carouselForUser(String userId, String lChannelAccessToken, java.util.List<String> randomLinks)
+			throws IOException {
+
+		java.util.List<CarouselColumn> columns = new ArrayList<>();
+
+		for (String link : randomLinks) {
+
+			Document doc = Jsoup.connect(link).get();
+			String title = doc.title();
+			String img = doc.getElementsByClass("max-width-260").get(0).attr("abs:src");
+
+			CarouselColumn column = new CarouselColumn(img, title, "Select one for more info",
+					Arrays.asList(new MessageAction("check", "check \"" + title + "\"")));
+			columns.add(column);
+
+		}
+
+		CarouselTemplate carouselTemplate = new CarouselTemplate(columns);
 
 		TemplateMessage templateMessage = new TemplateMessage("Your search result", carouselTemplate);
 		PushMessage pushMessage = new PushMessage(userId, templateMessage);
