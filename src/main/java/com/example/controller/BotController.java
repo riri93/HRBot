@@ -60,18 +60,18 @@ public class BotController {
 		java.util.List<String> randomLinksTokyo = new ArrayList<>();
 
 		sampleLinksOsaka.add("http://www.cjs.ne.jp/detail_b/T0000115892.html");
-		sampleLinksOsaka.add("http://www.cjs.ne.jp/detail_b/T0000394280.html");
-		sampleLinksOsaka.add("http://www.cjs.ne.jp/detail_b/T0000282562.html");
-		sampleLinksOsaka.add("http://www.cjs.ne.jp/detail_b/T0000301712.html");
-		sampleLinksOsaka.add("http://www.cjs.ne.jp/detail_b/T0000245299.html");
-		sampleLinksOsaka.add("http://www.cjs.ne.jp/detail_b/T0000242702.html");
+		sampleLinksOsaka.add("http://www.cjs.ne.jp/detail_b/T0000016010.html");
+		sampleLinksOsaka.add("http://www.cjs.ne.jp/detail_b/T0000075865.html");
+		sampleLinksOsaka.add("http://www.cjs.ne.jp/detail_b/T0000007615.html");
+		sampleLinksOsaka.add("http://www.cjs.ne.jp/detail_b/T0000007413.html");
+		sampleLinksOsaka.add("http://www.cjs.ne.jp/detail_b/T0000255552.html");
 
 		sampleLinksTokyo.add("http://www.cjs.ne.jp/detail_b/T0000430079.html");
-		sampleLinksTokyo.add("http://www.cjs.ne.jp/detail_b/T0000016010.html");
-		sampleLinksTokyo.add("http://www.cjs.ne.jp/detail_b/T0000075865.html");
-		sampleLinksTokyo.add("http://www.cjs.ne.jp/detail_b/T0000007615.html");
-		sampleLinksTokyo.add("http://www.cjs.ne.jp/detail_b/T0000007413.html");
-		sampleLinksTokyo.add("http://www.cjs.ne.jp/detail_b/T0000255552.html");
+		sampleLinksTokyo.add("http://www.cjs.ne.jp/detail_b/T0000394280.html");
+		sampleLinksTokyo.add("http://www.cjs.ne.jp/detail_b/T0000282562.html");
+		sampleLinksTokyo.add("http://www.cjs.ne.jp/detail_b/T0000301712.html");
+		sampleLinksTokyo.add("http://www.cjs.ne.jp/detail_b/T0000245299.html");
+		sampleLinksTokyo.add("http://www.cjs.ne.jp/detail_b/T0000242702.html");
 
 		Collections.shuffle(sampleLinksOsaka);
 		Collections.shuffle(sampleLinksTokyo);
